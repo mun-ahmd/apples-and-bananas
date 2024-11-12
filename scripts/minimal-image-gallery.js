@@ -23,14 +23,6 @@ function showImage(gallery, index) {
   nextButton.addEventListener('click', () => {
     showImage(gallery, (index + 1) % images.length);
   });
-
-  prevButton.addEventListener('touchstart', () => {
-    showImage(gallery, (index - 1 + images.length) % images.length);
-  });
-
-  nextButton.addEventListener('touchstart', () => {
-    showImage(gallery, (index + 1) % images.length);
-  });
 }
 
 galleries.forEach(gallery => {
