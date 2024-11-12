@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muneeb Ahmad</title>
+    <link rel="stylesheet" href="css/pico.classless.min.css">
+    <style>
+        /* Custom CSS for Sidebar Layout */
+        .project-container {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            min-height: 100vh;
+            overflow: visible;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 0;
+            width: 250px;
+            flex-shrink: 0;
+            z-index: 1;
+            height: calc(100vh - 60px);
+            /* Adjust the height as needed */
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+        }
+
+        .project-content {
+            flex-grow: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .project-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                position: relative;
+                width: 100%;
+            }
+        }
+    </style>
+    <style>
+        [data-images] {
+            position: relative;
+            width: 100%;
+        }
+
+        [data-images] img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        [data-images] .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            /* Adjust font size for smaller screens */
+        }
+
+        [data-images] .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            /* Adjust font size for smaller screens */
+        }
+
+        [data-images] .nav-button.prev {
+            left: 0;
+        }
+
+        [data-images] .nav-button.next {
+            right: 0;
+        }
+
+        @media (max-width: 768px) {
+            [data-images] .nav-button {
+                font-size: 16px;
+            }
+
+            [data-images] .caption {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">About</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li>Projects</li>
+            </ul>
+
+            <ul>
+                <li><a href="#" data-theme-switcher="toggle">Toggle Theme</a></li>
+            </ul>
+        </nav>
+        <hgroup class="flex-container">
+            <h1>Muneeb's Projects</h1>
+        </hgroup>
+    </header>
+
+    <hr>
+    <!-- Main Content -->
+    <main class="project-container">
+        <!-- Sidebar for Project Navigation -->
+        <aside class="sidebar">
+            <h2>Projects</h2>
+            <ul>
+                <li><a href="#projecteng2">Engine 2</a></li>
+                <li><a href="#projectvkfr">Vulkan Forward Clustered Renderer</a></li>
+                <li><a href="#projectldi">Latent Diffusion Inpainting</a></li>
+                <li><a href="#projectrptrace">Rust Path Tracer</a></li>
+                <li><a href="#projectterrain">Terrain Generation Experiments</a></li>
+                <li><a href="#projectlyra">Lyra Engine (Engine 1)</a></li>
+                <li><a href="#projectfetf">Engineering Football League</a></li>
+
+                <!-- Add more projects as needed -->
+            </ul>
+        </aside>
+
+        <!-- Main Project Content Area -->
+        <section class="project-content">
+            <article id="projecteng2">
+                <h2>Engine 2</h2>
+                <p>
+                    A 3D Rendering engine to draw massive amounts of geometry efficiently using per cluster culling.
+                </p>
+                <p>
+                    Meshes are divided into clusters,
+                    A compute shader determines currently visible clusters to minimize the amount of geometry drawn.
+                    Currently working to make this culling be done using heirarchical z.
+                    <br>
+                    Visibility buffer based rendering is used to save on GPU bandwidth.
+                    All triangles are loaded directly form storage buffers and all vertex attributes are
+                    software-interpolated manually
+                    in the pixel shader.
+                    <br>
+                    There is a complete seperation of Geometry, Material and Lighting passes.
+                </p>
+                <p>
+                    Also includes an automatic asset management system for loading/unloading from disk.
+                    <br>
+                    A custom implementation of a Sparse Array Entity Component System (ECS).
+                </p>
+                <div id="gallery-engine2" 
+                    data-images="assets/engine2-visibility-buffer.png,assets/engine2-material-depth.png"
+                    data-captions="A rendered visibility buffer with triangle and cluster ids,A material depth buffer is used for efficient material passes">
+                </div>
+                <p>C++17 | OpenGL</p>
+                <a href="https://github.com/mun-ahmd/Engine-2" target="_blank">GitHub</a>
+            </article>
+            <hr>
+            <article id="projectvkfr">
+                <h2>Vulkan Forward Clustered Renderer</h2>
+                <p>Written from the ground up to render 3D GLTF Scenes.</p>
+                <p>
+                    Forward++ aka Forward Clustered Rendering
+                    achieved using a compute shader to determine which lights influence which chunk of the view frustum,
+                    followed by traditional forward rendering,
+                    but calculating lighting only for lights in the same chunk of the view frustum as the surfel.
+                </p>
+                <p>C++17 | Vulkan</p>
+                <a href="https://github.com/mun-ahmd/forward-clustered" target="_blank">GitHub</a>
+            </article>
+            <hr>
+            <article id="projectldi">
+                <h2>Latent Diffusion Based Image Inpainting with Multimodal Guidance</h2>
+                <div>
+                    Better image inpainting that can be guided by
+                    <ul>
+                        <li>Text prompts</li>
+                        <li>Masks</li>
+                        <li>Reference images</li>
+                    </ul>
+                </div>
+                <p>
+                    Finetuning the stable diffusion inpainting model on a custom prepared dataset from the
+                    <a href="https://google.github.io/localized-narratives/" target="_blank">
+                        Open-Images Localized Narratives dataset
+                    </a>
+                    <br>
+                    Also, by making modifications to the existing classifier free guidance mechanism,
+                    reference images are also supported to guide the generated output. [WIP]
+                </p>
+                <p>Pytorch | HuggingFace Diffusers</p>
+            </article>
+            <hr>
+            <article id="projectrptrace">
+                <h2>RayCer: Rust Path Tracer</h2>
+                <p>
+                    A multithreaded path tracer. Based on the book series
+                    <a href="https://raytracing.github.io/" target="_blank">
+                        "Ray Tracing in One Weekend"
+                    </a>
+                </p>
+                <div id="gallery-raycer" 
+                    data-images="assets/raycer-spheres.jpg"
+                    data-captions="A scene with (left to right) a hollow glass sphere, a red sphere and a metal sphere.">
+                </div>
+
+                <p>Rust</p>
+                <a href="https://github.com/mun-ahmd/RayCer" target="_blank">GitHub</a>
+            </article>
+            <hr>
+            <article id="projectterrain">
+                <h2>Terrain Generation Experiments</h2>
+                <p>
+                    I have been experimenting with various terrain generation methods like
+                    <a href="https://developer.nvidia.com/gpugems/gpugems3/part-i-geometry/chapter-1-generating-complex-procedural-terrains-using-gpu" target="_blank">Generation on the GPU</a>
+                    and 
+                    <a href="https://www.fractal-landscapes.co.uk/" target="_blank">fractal landscapes</a>
+                </p>
+                <div id="gallery-terrain"
+                    data-images="assets/terrain-mountain-gen.png,assets/terrain-gpu-gem-gen.png,assets/terrain-gpu-gem-gen-2.png"
+                    data-captions="Simple Mountain,Generated on the GPU,Another angle">
+                </div>
+
+                <p>C++ | OpenGL</p>
+                <a href="https://github.com/mun-ahmd/Lyra-Engine" target="_blank">GitHub</a>
+            </article>
+            <hr>
+            <article id="projectlyra">
+                <h2>Lyra Engine</h2>
+                <p>
+                    My first and worst 3D rendering engine.
+                </p>
+                <div id="gallery-lyra"
+                    data-images="assets/lyra-engine-reflective-shadow-maps.png,assets/lyra-engine-trees.png"
+                    data-captions="Global Illumination using Reflective Shadow Maps,Post processing effects">
+                </div>
+
+                <p>C++ | OpenGL</p>
+                <a href="https://github.com/mun-ahmd/Lyra-Engine" target="_blank">GitHub</a>
+            </article>
+            <hr>
+            <article id="projectfetf">
+                <h2>Faculty of Engineering & Technology Football League</h2>
+                <p>
+                    I am the 2024-25 football secretary for the Sports Council of Faculty of Engineering & Technology,
+                    Jamia Millia Islamia.
+                </p>
+                <p>
+                    You can track the football league we organize
+                    <a href="https://vercel.com/muneebs-projects-16ae243d/jmi-fet-football-league" target="_blank">
+                        over here.
+                    </a>
+                </p>
+                <p>Years of Love for Football | HTML | CSS | JS</p>
+                <a href="https://github.com/mun-ahmd/Engine-2" target="_blank">GitHub</a>
+            </article>
+            <hr>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="https://github.com/mun-ahmd" target="_blank">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/muneeb-ahmad-569218247" target="_blank">LinkedIn</a></li>
+                <!-- Add other socials -->
+            </ul>
+            <ul>
+                <li>&copy; 2024 Muneeb Ahmad</li>
+
+            </ul>
+        </nav>
+    </footer>
+
+    <script src="scripts/minimal-theme-switcher.js"></script>
+    <script src="scripts/minimal-image-gallery.js"></script>
+</body>
+
+</html
