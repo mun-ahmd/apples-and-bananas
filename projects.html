@@ -153,24 +153,19 @@
             <article id="projecteng2">
                 <h2>Engine 2</h2>
                 <p>
-                    A 3D Rendering engine to draw massive amounts of geometry efficiently using per cluster culling.
+                    A 3D rendering engine capable of drawing massive amounts of geometry efficiently, made possible using per-cluster culling.
                 </p>
                 <p>
-                    Meshes are divided into clusters,
-                    A compute shader determines currently visible clusters to minimize the amount of geometry drawn.
-                    Currently working to make this culling be done using heirarchical z.
+                    Meshes are divided into clusters. A compute shader determines currently visible clusters to minimize the amount of geometry drawn. We are currently working to make this culling use hierarchical z.
                     <br>
-                    Visibility buffer based rendering is used to save on GPU bandwidth.
-                    All triangles are loaded directly form storage buffers and all vertex attributes are
-                    software-interpolated manually
-                    in the pixel shader.
+                    Visibility buffer-based rendering is used to save on GPU bandwidth. All triangles are loaded directly from storage buffers, and all vertex attributes are software-interpolated manually in the pixel shader.
                     <br>
-                    There is a complete seperation of Geometry, Material and Lighting passes.
+                    There is a complete separation of Geometry, Material, and Lighting passes.
                 </p>
                 <p>
-                    Also includes an automatic asset management system for loading/unloading from disk.
+                    It also includes an automatic asset management system for loading/unloading from disk.
                     <br>
-                    A custom implementation of a Sparse Array Entity Component System (ECS).
+                    A custom Sparse Array Entity Component System (ECS) implementation is included.
                 </p>
                 <div id="gallery-engine2" 
                     data-images="assets/engine2-visibility-buffer.png,assets/engine2-material-depth.png"
@@ -184,10 +179,7 @@
                 <h2>Vulkan Forward Clustered Renderer</h2>
                 <p>Written from the ground up to render 3D GLTF Scenes.</p>
                 <p>
-                    Forward++ aka Forward Clustered Rendering
-                    achieved using a compute shader to determine which lights influence which chunk of the view frustum,
-                    followed by traditional forward rendering,
-                    but calculating lighting only for lights in the same chunk of the view frustum as the surfel.
+                    Forward++, aka Forward Clustered Rendering, is achieved using a compute shader to determine which lights influence which chunk of the view frustum. This is followed by traditional forward rendering, which calculates lighting only for lights in the same chunk of the view frustum as the surfel.
                 </p>
                 <p>C++17 | Vulkan</p>
                 <a href="https://github.com/mun-ahmd/forward-clustered" target="_blank">GitHub</a>
@@ -204,13 +196,12 @@
                     </ul>
                 </div>
                 <p>
-                    Finetuning the stable diffusion inpainting model on a custom prepared dataset from the
+                    Finetuning the stable diffusion inpainting model on a custom-prepared dataset from the
                     <a href="https://google.github.io/localized-narratives/" target="_blank">
                         Open-Images Localized Narratives dataset
                     </a>
                     <br>
-                    Also, by making modifications to the existing classifier free guidance mechanism,
-                    reference images are also supported to guide the generated output. [WIP]
+                    Also, by modifying the existing classifier free guidance mechanism, reference images are supported to guide the generated output. [WIP]
                 </p>
                 <p>Pytorch | HuggingFace Diffusers</p>
             </article>
@@ -266,7 +257,7 @@
             <article id="projectfetf">
                 <h2>Faculty of Engineering & Technology Football League</h2>
                 <p>
-                    I am the 2024-25 football secretary for the Sports Council of Faculty of Engineering & Technology,
+                    I am the 2024-25 football secretary for the Sports Council of the Faculty of Engineering & Technology,
                     Jamia Millia Islamia.
                 </p>
                 <p>
