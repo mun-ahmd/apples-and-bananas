@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muneeb Ahmad</title>
+    <title>Muneeb Ahmad — Projects</title>
     <link rel="stylesheet" href="css/pico.classless.min.css">
     <style>
         /* Custom CSS for Sidebar Layout */
@@ -136,13 +136,14 @@
         <aside class="sidebar">
             <h2>Projects</h2>
             <ul>
-                <li><a href="#projecteng2">Engine 2</a></li>
+                <li><a href="#projectspmv">SpMV with DirectX Work Graphs</a></li>
+                <li><a href="#projectkvpress">KV Cache Compression</a></li>
                 <li><a href="#projectvkfr">Vulkan Forward Clustered Renderer</a></li>
-                <li><a href="#projectldi">Latent Diffusion Inpainting</a></li>
+                <li><a href="#projecteng2">Engine 2</a></li>
                 <li><a href="#projectrptrace">Rust Path Tracer</a></li>
                 <li><a href="#projectterrain">Terrain Generation Experiments</a></li>
                 <li><a href="#projectlyra">Lyra Engine (Engine 1)</a></li>
-                <li><a href="#projectfetf">Engineering Football League</a></li>
+                <li><a href="#projectldi">Latent Diffusion Inpainting</a></li>
 
                 <!-- Add more projects as needed -->
             </ul>
@@ -150,6 +151,44 @@
 
         <!-- Main Project Content Area -->
         <section class="project-content">
+            <article id="projectspmv">
+                <h2>SpMV on GPUs using DirectX Work Graphs</h2>
+                <p>
+                    Sparse Matrix–Vector Multiplication (SpMV) is an important operation used to accelerate deep learning models on the GPU, but its irregular structure makes it hard to load balance.
+                </p>
+                <p>
+                    This project implements load-balanced SpMV using DirectX12 Work Graphs, letting the GPU schedule work dynamically to achieve better performance despite the irregular nature of the application.
+                </p>
+                <p>July 2025 – Oct 2025 | DirectX12 | HLSL</p>
+                <a href="https://github.com/mun-ahmd/SpMV_DX_WorkGraphs" target="_blank">GitHub</a>
+            </article>
+            <hr>
+            <article id="projectkvpress">
+                <h2>KV Cache Compression with KV Press</h2>
+                <p>
+                    A KV cache eviction policy for LLM inference that considers both recent attention scores and value vectors when deciding which entries to keep.
+                </p>
+                <ul>
+                    <li>Integrated with the <a href="https://github.com/NVIDIA/kvpress" target="_blank">kvpress</a> framework.</li>
+                    <li>Benchmarked using lm-eval-harness on LongBench with the Mistral-7B-Instruct LLM.</li>
+                </ul>
+                <p>Sept 2025 – Dec 2025 | PyTorch | kvpress | lm-eval-harness</p>
+                <a href="https://github.com/mun-ahmd/lava-kvpress" target="_blank">GitHub</a>
+            </article>
+            <hr>
+            <article id="projectvkfr">
+                <h2>Vulkan Forward Clustered Renderer</h2>
+                <p>Written from the ground up to render 3D GLTF Scenes, with a focus on an easy-to-modify rendering pipeline.</p>
+                <p>
+                    Forward++, aka Forward Clustered Rendering, is achieved using a compute shader to determine which lights influence which chunk of the view frustum. This is followed by traditional forward rendering, which calculates lighting only for lights in the same chunk of the view frustum as the surfel. This lets it handle large numbers of lights.
+                </p>
+                <p>
+                    Also includes a voxel renderer with compute shader-based meshing that reduces draw count by 6x.
+                </p>
+                <p>April 2023 – July 2024 | C++17 | Vulkan</p>
+                <a href="https://github.com/mun-ahmd/forward-clustered" target="_blank">GitHub</a>
+            </article>
+            <hr>
             <article id="projecteng2">
                 <h2>Engine 2</h2>
                 <p>
@@ -173,37 +212,6 @@
                 </div>
                 <p>C++17 | OpenGL</p>
                 <a href="https://github.com/mun-ahmd/Engine-2" target="_blank">GitHub</a>
-            </article>
-            <hr>
-            <article id="projectvkfr">
-                <h2>Vulkan Forward Clustered Renderer</h2>
-                <p>Written from the ground up to render 3D GLTF Scenes.</p>
-                <p>
-                    Forward++, aka Forward Clustered Rendering, is achieved using a compute shader to determine which lights influence which chunk of the view frustum. This is followed by traditional forward rendering, which calculates lighting only for lights in the same chunk of the view frustum as the surfel.
-                </p>
-                <p>C++17 | Vulkan</p>
-                <a href="https://github.com/mun-ahmd/forward-clustered" target="_blank">GitHub</a>
-            </article>
-            <hr>
-            <article id="projectldi">
-                <h2>Latent Diffusion Based Image Inpainting with Multimodal Guidance</h2>
-                <div>
-                    Better image inpainting that can be guided by
-                    <ul>
-                        <li>Text prompts</li>
-                        <li>Masks</li>
-                        <li>Reference images</li>
-                    </ul>
-                </div>
-                <p>
-                    Finetuning the stable diffusion inpainting model on a custom-prepared dataset from the
-                    <a href="https://google.github.io/localized-narratives/" target="_blank">
-                        Open-Images Localized Narratives dataset
-                    </a>
-                    <br>
-                    Also, by modifying the existing classifier free guidance mechanism, reference images are supported to guide the generated output. [WIP]
-                </p>
-                <p>Pytorch | HuggingFace Diffusers</p>
             </article>
             <hr>
             <article id="projectrptrace">
@@ -254,19 +262,25 @@
                 <a href="https://github.com/mun-ahmd/Lyra-Engine" target="_blank">GitHub</a>
             </article>
             <hr>
-            <article id="projectfetf">
-                <h2>Faculty of Engineering & Technology Football League</h2>
+            <article id="projectldi">
+                <h2>Latent Diffusion Based Image Inpainting with Multimodal Guidance</h2>
+                <div>
+                    Better image inpainting that can be guided by
+                    <ul>
+                        <li>Text prompts</li>
+                        <li>Masks</li>
+                        <li>Reference images</li>
+                    </ul>
+                </div>
                 <p>
-                    I am the 2024-25 football secretary for the Sports Council of the Faculty of Engineering & Technology,
-                    Jamia Millia Islamia.
-                </p>
-                <p>
-                    You can track the football league we organize
-                    <a href="https://jmi-fet-football-league.vercel.app/" target="_blank">
-                        over here.
+                    Finetuning the stable diffusion inpainting model on a custom-prepared dataset from the
+                    <a href="https://google.github.io/localized-narratives/" target="_blank">
+                        Open-Images Localized Narratives dataset
                     </a>
+                    <br>
+                    Also, by modifying the existing classifier free guidance mechanism, reference images are supported to guide the generated output. [WIP]
                 </p>
-                <p>Years of Football | HTML | CSS | JS</p>
+                <p>Pytorch | HuggingFace Diffusers</p>
             </article>
             <hr>
         </section>

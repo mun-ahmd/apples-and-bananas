@@ -6,7 +6,9 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muneeb Ahmad</title>
+    <meta name="description"
+        content="Muneeb Ahmad: M.S. ECE student at UC Davis working on GPU architecture, GPU kernels, and ML inference systems.">
+    <title>Muneeb Ahmad — GPU &amp; ML Systems</title>
 
     <link rel="stylesheet" href="css/pico.classless.min.css">
     <style>
@@ -24,7 +26,85 @@
         }
 
         .image-section {
-            max-width: 20rem;
+            max-width: 14rem;
+        }
+
+        /* Role/degree title on the left, dates on the right; wraps on narrow screens */
+        .entry-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            column-gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .entry-header h3 {
+            margin-bottom: 0;
+        }
+
+        .entry-date {
+            color: var(--pico-muted-color);
+            white-space: nowrap;
+        }
+
+        .entry-sub {
+            color: var(--pico-muted-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Hero summary so visitors see the full experience is on this page */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        section,
+        article {
+            scroll-margin-top: 1rem;
+        }
+
+        .at-a-glance h2 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--pico-muted-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .at-a-glance ul {
+            margin-bottom: 0.75rem;
+        }
+
+        .at-a-glance li {
+            margin-bottom: 0.1rem;
+        }
+
+        .at-a-glance .entry-date {
+            margin-left: 0.5rem;
+            font-size: 0.9em;
+        }
+
+        .page-toc {
+            display: block;
+        }
+
+        .page-toc span {
+            color: var(--pico-muted-color);
+        }
+
+        section article ul {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .flex-container {
+                flex-direction: column-reverse;
+                align-items: flex-start;
+            }
+
+            .title-section {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -46,7 +126,25 @@
         <hgroup class="flex-container">
             <div class="title-section">
                 <h1>Muneeb Ahmad</h1>
-                <p>Hi, I'm an M.S. student in Electrical and Computer Engineering at UC Davis (2025–2027), advised by Prof. <a href="https://www.ece.ucdavis.edu/~jowens/research.html" target="_blank" rel="noopener">John Owens</a>. As part of my research, I work on the GPU–ML stack: kernels for LLM inference (paged attention), vLLM integration, and the path from PyTorch to the GPU. I received my B.Tech. in Computer Engineering from Jamia Millia Islamia. In Summer 2026, I will intern with Qualcomm's GPU Research team.</p>
+                <p>Hi, I'm an M.S. student in Electrical and Computer Engineering at UC Davis (2025–2027), advised by Prof. <a href="https://www.ece.ucdavis.edu/~jowens/research.html" target="_blank" rel="noopener">John Owens</a>. I work on GPU architecture and performance, and on the GPU–ML stack: custom attention kernels for LLM inference, KV cache compression, and vLLM integration.</p>
+                <p>This summer I interned with Qualcomm's GPU Research team in San Diego, analyzing and improving ray-tracing performance on Adreno GPUs. I received my B.Tech. in Computer Engineering from Jamia Millia Islamia.</p>
+                <p><strong>I am looking for roles in GPU architecture, GPU performance, and ML inference.</strong></p>
+                <div class="at-a-glance">
+                    <h2>At a glance</h2>
+                    <ul>
+                        <li><a href="#exp-qualcomm">GPU Research Intern, Qualcomm</a> <span class="entry-date">Summer 2026</span></li>
+                        <li><a href="#exp-owens">Graduate Student Researcher, Owens Group</a> <span class="entry-date">Nov 2025 – Present</span></li>
+                        <li><a href="#exp-beyondefense">Researcher, BeyondDefence Lab</a> <span class="entry-date">Jan – Sept 2025</span></li>
+                    </ul>
+                </div>
+                <nav class="page-toc" aria-label="On this page">
+                    <span>On this page:</span>
+                    <a href="#experience">Experience</a> ·
+                    <a href="#selected-projects">Projects</a> ·
+                    <a href="#education">Education</a> ·
+                    <a href="#skills">Skills</a> ·
+                    <a href="#contact">Contact</a>
+                </nav>
             </div>
             <figure class="image-section">
                 <img src="assets/muneeb.jpg"
@@ -63,21 +161,115 @@
     <hr>
     <!-- Main Content -->
     <main>
-        <!-- About Me Page -->
-        <div id="about">
-            <p>
-                I am passionate about working in the following domains:
 
+        <section id="experience">
+            <h2>Experience</h2>
+
+            <article id="exp-qualcomm">
+                <div class="entry-header">
+                    <h3>GPU Research Intern, Qualcomm</h3>
+                    <span class="entry-date">Jun 2026 – Sept 2026</span>
+                </div>
+                <p class="entry-sub">San Diego, CA</p>
+                <ul>
+                    <li>Analyzed ray-tracing performance on Adreno GPUs for both Vulkan and DirectX12, on both ray pipeline and ray query workloads.
+                        <ul>
+                            <li>Identified bottlenecks using hardware performance counters and traced fixes back to the shader compiler codegen.</li>
+                            <li>Fixes resulted in a 2x speedup in targeted configurations.</li>
+                            <li>Identified memory overallocation bugs in the compiler.</li>
+                        </ul>
+                    </li>
+                    <li>Proposed memory layouts that achieve 100% (2x existing) memory bandwidth utilization for ray-tracing internal data by improving coalescing behavior; the design also improves cache-friendliness.</li>
+                    <li>Created AI agent-based tooling to aid in end-to-end on-device performance analysis, regression testing, and root-causing.</li>
+                </ul>
+            </article>
+
+            <article id="exp-owens">
+                <div class="entry-header">
+                    <h3>Graduate Student Researcher, <a href="https://www.ece.ucdavis.edu/~jowens/research.html" target="_blank" rel="noopener">Owens Group</a></h3>
+                    <span class="entry-date">Nov 2025 – Present</span>
+                </div>
+                <p class="entry-sub">UC Davis</p>
+                <ul>
+                    <li>Created optimized custom GPU kernels for compressed paged attention with fused RoPE using DSLs at various levels of abstraction Triton, Gluon and HipKittens.</li>
+                    <li>Integrated custom attention paths into vLLM, including managing the KV cache in bespoke formats.</li>
+                    <li>Implemented gesvda on top of rocSOLVER for 10x faster approximate singular value decomposition on AMD GPUs.</li>
+                    <li>Developement of hardware-efficient methods to compress the KV cache 8–30x with minimal accuracy degradation (&lt;2% on task performance).</li>
+                    <li>Extensively evaluated LLM task performance using models like Llama and Qwen3 on benchmarks like LongBench and GSM-8K.</li>
+                </ul>
+            </article>
+
+            <article id="exp-beyondefense">
+                <div class="entry-header">
+                    <h3>Researcher, <a href="https://beyondefense.org/team/" target="_blank" rel="noopener">BeyondDefence Lab</a></h3>
+                    <span class="entry-date">Jan 2025 – Sept 2025</span>
+                </div>
+                <p class="entry-sub">University of New Mexico</p>
+                <ul>
+                    <li>Created a framework to find the optimal deployment strategy for a given deep learning model on a given edge device, targeting satellites and robotics.</li>
+                    <li>Achieved a ~400% improvement in latency on the Coral Edge TPU dev board.</li>
+                    <li>Worked with hardware accelerators such as the Coral Edge TPU and NVIDIA Jetson Nano.</li>
+                    <li>Applied quantization to models and transformed formats for compatibility with different hardware.</li>
+                </ul>
+            </article>
+        </section>
+
+        <section id="selected-projects">
+            <h2>Selected Projects</h2>
             <ul>
-                <li>Graphics programming</li>
-                <li>GPGPU &amp; GPU kernels</li>
-                <li>ML inference systems</li>
-                <li>Computer architecture</li>
+                <li><a href="projects.html#projectspmv"><strong>SpMV on GPUs using DirectX Work Graphs</strong></a>: load-balanced sparse matrix–vector multiplication using DirectX12 Work Graphs. (<a href="https://github.com/mun-ahmd/SpMV_DX_WorkGraphs" target="_blank" rel="noopener">GitHub</a>)</li>
+                <li><a href="projects.html#projectkvpress"><strong>KV Cache Compression with KV Press</strong></a>: a KV cache eviction policy using recent attention scores and value vectors, benchmarked on LongBench. (<a href="https://github.com/mun-ahmd/lava-kvpress" target="_blank" rel="noopener">GitHub</a>)</li>
+                <li><a href="projects.html#projectvkfr"><strong>Vulkan Forward Clustered Renderer</strong></a>: compute-shader light clustering and voxel meshing with 6x fewer draws. (<a href="https://github.com/mun-ahmd/forward-clustered" target="_blank" rel="noopener">GitHub</a>)</li>
             </ul>
-            </p>
-            <!-- Removed email me to prevent spam it needs a backend -->
+            <p><a href="projects.html">All projects &rarr;</a></p>
+        </section>
 
-        </div>
+        <section id="education">
+            <h2>Education</h2>
+
+            <article>
+                <div class="entry-header">
+                    <h3>M.S., Electrical and Computer Engineering</h3>
+                    <span class="entry-date">Sept 2025 – June 2027</span>
+                </div>
+                <p class="entry-sub">University of California, Davis</p>
+                <ul>
+                    <li><strong>Advisor:</strong> <a href="https://www.ece.ucdavis.edu/~jowens/research.html" target="_blank" rel="noopener">John Owens</a></li>
+                    <li><strong>Coursework:</strong> Modelling &amp; Optimization in Computer Engineering, Large-scale Scientific Computing, High Performance Statistical Computing, Computer Architecture, Information Theory &amp; Coding</li>
+                </ul>
+            </article>
+
+            <article>
+                <div class="entry-header">
+                    <h3>B.Tech., Computer Engineering</h3>
+                    <span class="entry-date">2021 – 2025</span>
+                </div>
+                <p class="entry-sub">Jamia Millia Islamia, New Delhi, India</p>
+                <ul>
+                    <li><strong>CGPA:</strong> 9.05 / 10</li>
+                    <li><strong>Coursework:</strong> Computer Networks, Network Security, Computer Architecture, Digital System Design, Embedded Systems, Operating Systems, Parallel &amp; Distributed Computing</li>
+                </ul>
+            </article>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li><strong>Languages:</strong> C, C++, CUDA, Triton, Python, Rust, GLSL, HLSL, JavaScript, SQL</li>
+                <li><strong>Frameworks:</strong> PyTorch, TensorFlow, vLLM, Vulkan, DirectX12, OpenGL, OpenMP, MPI, STM32-HAL</li>
+                <li><strong>Tools:</strong> NVIDIA Nsight, PyTorch Profiler, RenderDoc, PIX, Visual Studio, perf, CMake, Perfetto</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <!-- Email written out as text (not a mailto link) to reduce scraping -->
+            <p>
+                Email: muneeb0ahmed3 [at] gmail [dot] com
+                <br>
+                Resume: <a href="assets/resume.pdf?v=202609" target="_blank">PDF</a>
+            </p>
+        </section>
     </main>
 
     <!-- Footer -->
